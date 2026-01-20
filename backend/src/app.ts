@@ -1,16 +1,7 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
+import express from 'express';
+import router from './routes/convert.routes';
 
-dotenv.config();
+export const app = express();
 
-const app = express();
-const port = 3000;
-
-app.get("/health", (req, res) => {
-    res.json({status: 'Funcionando!', message:'API está funcionando!'})
-});
-
-app.listen(port, () => {
-    console.log(`Server rodando na porta ${port}`)
-})
+app.use(express.json());
+app.use(router);

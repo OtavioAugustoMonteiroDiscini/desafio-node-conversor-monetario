@@ -352,12 +352,6 @@ O projeto segue as melhores práticas:
 
 ---
 
-## 📝 Licença
-
-Este projeto está sob a licença **ISC**.
-
----
-
 ## 👤 Autor
 
 Desenvolvido como desafio de Node.js + Angular para conversão monetária.

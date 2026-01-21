@@ -310,9 +310,17 @@ curl -X GET "http://localhost:3000/convert?from=USD&to=BRL&amount=100" \
 ### Backend (.env)
 ```env
 PORT=3000
-NODE_ENV=development
+API_KEY = ''
+
 ```
 
+### Frontend (environment.ts)
+```
+export const environment = {
+  production: false,
+  apiKey: '',
+};
+```
 ---
 
 ## 🎨 Componentes Principais

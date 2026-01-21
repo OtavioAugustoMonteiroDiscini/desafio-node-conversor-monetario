@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="card">
+    <h1>Conversor de Moedas</h1>
+
+    <div class="converter-form">
+      <div class="input-group">
+        <label>De</label>
+        <select [(ngModel)]="from" name="from">
+          <option *ngFor="let curr of fromCurrencies" [value]="curr.code">{{ curr.code }} - {{ curr.name }}</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>Para</label>
+        <select [(ngModel)]="to" name="to">
+          <option *ngFor="let curr of toCurrencies" [value]="curr.code">{{ curr.code }} - {{ curr.name }}</option>
+        </select>
+      </div>
+
+      <div class="input-group full-width">
+        <label>Valor</label>
+        <input
+          type="number"
+          [(ngModel)]="amount"
+          name="amount"
+          placeholder="Digite o valor"
+          min="0.01"
+          step="0.01"
+          (keyup.enter)="convert()"
+        />
+      </div>
+
+      <button class="convert-btn" (click)="convert()" type="button" [disabled]="loading">
+        {{ loading ? 'Convertendo...' : 'Converter' }}
+      </button>
+    </div>
+
+    @if (error) {
+      <div class="error-message">
+        {{ error }}
+      </div>
+    }
+
+    @if (result) {
+      <div class="result-card">
+        <div class="result-header">
+          <h2>Resultado</h2>
+          <span class="cache-badge" [class.cached]="result.cached">
+            {{ result.cached ? 'Cache' : 'API' }}
+          </span>
+        </div>
+
+        <div class="result-content">
+          <div class="conversion-info">
+            <span class="amount-from">{{ result.amount | number: '1.2-2' }} {{ result.from }}</span>
+            <span class="equals">=</span>
+            <span class="amount-to">{{ result.result | number: '1.2-2' }} {{ result.to }}</span>
+          </div>
+
+          <div class="rate-info">Taxa: 1 {{ result.from }} = {{ result.rate | number: '1.4-4' }} {{ result.to }}</div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

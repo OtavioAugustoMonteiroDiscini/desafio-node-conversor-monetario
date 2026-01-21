@@ -147,17 +147,17 @@ A aplicação estará disponível em `http://localhost:4200`
 ### GET /convert
 Converte um valor de uma moeda para outra.
 
-**Autenticação**: Requerida (header `Authorization`)
+**Autenticação**: Requerida (header `x-api-key`)
 
 **Query Parameters**:
 - `from` - Moeda de origem (ex: USD)
 - `to` - Moeda de destino (ex: BRL)
 - `amount` - Valor a converter (número)
 
-**Exemplo**:
+**Exemplo cURL**:
 ```bash
-curl -H "Authorization: bearer token" \
-  "http://localhost:3000/convert?from=USD&to=BRL&amount=100"
+curl -X GET "http://localhost:3000/convert?from=USD&to=BRL&amount=100" \
+  -H "x-api-key: d05df6e37e74b05148dc626b4409487fba2d89cedc3e63662730c707b56bbdf1"
 ```
 
 **Resposta**:
@@ -171,6 +171,117 @@ curl -H "Authorization: bearer token" \
   "cached": false
 }
 ```
+
+---
+
+## 📮 Exemplos de Requisição no Postman
+
+### Configuração Básica
+
+1. **Método**: GET
+2. **URL**: `http://localhost:3000/convert`
+3. **Headers**:
+   - Key: `x-api-key`
+   - Value: `d05df6e37e74b05148dc626b4409487fba2d89cedc3e63662730c707b56bbdf1`
+4. **Query Params**:
+   - `from`: USD
+   - `to`: BRL
+   - `amount`: 100
+
+### Passo a Passo no Postman
+
+**1. Criar Nova Requisição**
+   - Clique em `+ New` > `Request`
+   - Nomeie como "Convert Currency"
+
+**2. Configurar Requisição**
+   - **Method**: Selecione `GET`
+   - **URL**: Cole `http://localhost:3000/convert`
+
+**3. Adicionar Query Parameters**
+   - Clique na aba `Params` (abaixo da URL)
+   - Adicione as seguintes linhas:
+
+| Key | Value |
+|-----|-------|
+| from | USD |
+| to | BRL |
+| amount | 100 |
+
+**4. Adicionar Header de Autenticação**
+   - Clique na aba `Headers`
+   - **Key**: `x-api-key`
+   - **Value**: `d05df6e37e74b05148dc626b4409487fba2d89cedc3e63662730c707b56bbdf1`
+
+**5. Enviar Requisição**
+   - Clique em `Send`
+   - A resposta será exibida na aba `Body`
+
+### Exemplos de Query Params
+
+**Exemplo 1: Converter USD para BRL (100)**
+
+| Key | Value |
+|-----|-------|
+| from | USD |
+| to | BRL |
+| amount | 100 |
+
+**Exemplo 2: Converter EUR para BRL (50)**
+
+| Key | Value |
+|-----|-------|
+| from | EUR |
+| to | BRL |
+| amount | 50 |
+
+**Exemplo 3: Converter BTC para BRL (0.5)**
+
+| Key | Value |
+|-----|-------|
+| from | BTC |
+| to | BRL |
+| amount | 0.5 |
+
+**Exemplo 4: Converter USD para EUR (200)**
+
+| Key | Value |
+|-----|-------|
+| from | USD |
+| to | EUR |
+| amount | 200 |
+
+### Resposta Esperada
+
+```json
+{
+  "from": "USD",
+  "to": "BRL",
+  "amount": 100,
+  "rate": 5.2450,
+  "result": 524.50,
+  "cached": false
+}
+```
+
+### Códigos de Resposta
+
+| Código | Significado |
+|--------|------------|
+| **200** | Conversão realizada com sucesso |
+| **400** | Parâmetros inválidos ou moeda não suportada |
+| **401** | Chave de API inválida ou ausente |
+| **429** | Limite de requisições excedido |
+| **500** | Erro interno do servidor |
+
+### Dicas Úteis
+
+- ✅ Certifique-se que o backend está rodando (`npm run dev`)
+- ✅ Use a aba **Params** para adicionar query parameters de forma organizada
+- ✅ A chave de API deve estar no header `x-api-key` (não `Authorization`)
+- ✅ As moedas suportadas são: `USD`, `BRL`, `EUR`, `BTC`
+- ✅ Todas as requisições são convertidas para `BRL`
+- ✅ Respostas em cache mostram `"cached": true`
 
 ---
 

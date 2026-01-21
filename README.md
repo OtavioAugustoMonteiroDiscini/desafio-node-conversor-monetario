@@ -243,14 +243,6 @@ curl -X GET "http://localhost:3000/convert?from=USD&to=BRL&amount=100" \
 | to | BRL |
 | amount | 0.5 |
 
-**Exemplo 4: Converter USD para EUR (200)**
-
-| Key | Value |
-|-----|-------|
-| from | USD |
-| to | EUR |
-| amount | 200 |
-
 ### Resposta Esperada
 
 ```json
@@ -296,7 +288,7 @@ curl -X GET "http://localhost:3000/convert?from=USD&to=BRL&amount=100" \
 - `npm run format` - Formatar código
 
 ### Frontend
-- `npm start` - Servidor de desenvolvimento
+- `npm run start` - Servidor de desenvolvimento
 - `npm run build` - Build para produção
 - `npm run watch` - Build em modo watch
 - `npm test` - Executar testes

@@ -157,7 +157,7 @@ Converte um valor de uma moeda para outra.
 **Exemplo cURL**:
 ```bash
 curl -X GET "http://localhost:3000/convert?from=USD&to=BRL&amount=100" \
-  -H "x-api-key: d05df6e37e74b05148dc626b4409487fba2d89cedc3e63662730c707b56bbdf1"
+  -H "x-api-key: SUA_API_KEY"
 ```
 
 **Resposta**:
@@ -182,7 +182,7 @@ curl -X GET "http://localhost:3000/convert?from=USD&to=BRL&amount=100" \
 2. **URL**: `http://localhost:3000/convert`
 3. **Headers**:
    - Key: `x-api-key`
-   - Value: `d05df6e37e74b05148dc626b4409487fba2d89cedc3e63662730c707b56bbdf1`
+   - Value: `SUA_API_KEY`
 4. **Query Params**:
    - `from`: USD
    - `to`: BRL
@@ -211,7 +211,7 @@ curl -X GET "http://localhost:3000/convert?from=USD&to=BRL&amount=100" \
 **4. Adicionar Header de Autenticação**
    - Clique na aba `Headers`
    - **Key**: `x-api-key`
-   - **Value**: `d05df6e37e74b05148dc626b4409487fba2d89cedc3e63662730c707b56bbdf1`
+   - **Value**: `SUA_API_KEY`
 
 **5. Enviar Requisição**
    - Clique em `Send`
